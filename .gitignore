@@ -37,6 +37,7 @@ ENV/
 # Generated files
 output/*.png
 *.png
+!showcase.png
 
 # pytest
 .pytest_cache/

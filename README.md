@@ -2,6 +2,8 @@
 
 A Python CLI tool and web app that generates QR codes with pixel-art text embedded inside.
 
+![QR-Code to this repo with "QR-Code" ASCII-text embedded](/showcase.png)
+
 ## Quick Start
 
 ### CLI

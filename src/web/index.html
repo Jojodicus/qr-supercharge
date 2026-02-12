@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Supercharge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QR Supercharge</h1>
+            <p class="subtitle">Generate QR codes with embedded pixel-art text</p>
+        </header>
+
+        <main class="main-content">
+            <section class="input-section">
+                <form id="qr-form" class="qr-form">
+                    <div class="form-group">
+                        <label for="url-input">URL</label>
+                        <input 
+                            type="url" 
+                            id="url-input" 
+                            name="url"
+                            placeholder="https://github.com" 
+                            required
+                            autocomplete="off"
+                        >
+                        <span class="error-message" id="url-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="text-input">Text (optional)</label>
+                        <input 
+                            type="text" 
+                            id="text-input" 
+                            name="text"
+                            placeholder="GITHUB"
+                            maxlength="15"
+                            autocomplete="off"
+                        >
+                        <span class="help-text">Defaults to domain from URL. 10-15 chars recommended.</span>
+                        <span class="error-message" id="text-error"></span>
+                    </div>
+                </form>
+            </section>
+
+            <section class="output-section">
+                <div class="qr-container" id="qr-container">
+                    <div class="qr-placeholder" id="qr-placeholder">
+                        <div class="placeholder-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                <path d="M3 14h7v7H3z"/>
+                                <path d="M10 10h4v4h-4z"/>
+                            </svg>
+                        </div>
+                        <p class="placeholder-text">Enter a URL to generate QR code</p>
+                    </div>
+                    
+                    <div class="qr-loading hidden" id="qr-loading">
+                        <div class="spinner"></div>
+                        <p>Generating...</p>
+                    </div>
+                    
+                    <div class="qr-result hidden" id="qr-result">
+                        <img id="qr-image" src="" alt="Generated QR Code">
+                        <div class="qr-info">
+                            <span id="qr-version"></span>
+                            <span id="qr-text"></span>
+                        </div>
+                        <button id="download-btn" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Download
+                        </button>
+                    </div>
+
+                    <div class="qr-error hidden" id="qr-error">
+                        <div class="error-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </div>
+                        <p id="error-message"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built with FastAPI & Vanilla JS</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
